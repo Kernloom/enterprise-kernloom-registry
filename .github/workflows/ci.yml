@@ -19,7 +19,7 @@ jobs:
           path: kernloom-core-registry
       - uses: actions/setup-go@v5
         with:
-          go-version: "1.26.4"
+          go-version: "1.26"
       - run: test -f enterprise/vocabulary.yaml
       - run: test -f enterprise/profiles.yaml
       - run: test -f bindings/stages.yaml
