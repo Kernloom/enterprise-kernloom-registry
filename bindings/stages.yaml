@@ -1,0 +1,30 @@
+kind: StageBindings
+metadata:
+  id: enterprise.default.stage_bindings
+  version: v0.1.0
+spec:
+  stages:
+    - id: dev
+      owner: platform-owner
+      required_gates:
+        - compile
+    - id: test
+      owner: platform-owner
+      required_gates:
+        - compile
+        - simulation
+    - id: int
+      owner: security-owner
+      required_gates:
+        - compile
+        - simulation
+        - validation
+    - id: prod
+      owner: security-owner
+      required_gates:
+        - compile
+        - simulation
+        - validation
+        - approval
+        - signed_artifacts
+

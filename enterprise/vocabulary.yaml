@@ -1,0 +1,29 @@
+kind: EnterpriseVocabulary
+metadata:
+  id: enterprise.default.vocabulary
+  version: v0.1.0
+spec:
+  terms:
+    - id: enterprise.resource.production_admin_application
+      label: production admin application
+      aliases:
+        - prod admin app
+      owner: security-platform
+      extends: resource.production_admin_application
+      semantic_mapping: application.environment == "prod" && application.admin_surface == true
+      allowed_policy_types:
+        - access
+      required_evidence:
+        - evidence.application_inventory
+    - id: enterprise.subject.human_administrator
+      label: human administrator
+      aliases:
+        - admin user
+      owner: identity-platform
+      extends: subject.human_administrator
+      semantic_mapping: identity.type == "human" && identity.role == "administrator"
+      allowed_policy_types:
+        - access
+      required_evidence:
+        - evidence.identity_provider
+

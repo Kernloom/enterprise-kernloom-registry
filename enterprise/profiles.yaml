@@ -1,0 +1,18 @@
+kind: EnterpriseProfileSet
+metadata:
+  id: enterprise.default.profiles
+  version: v0.1.0
+spec:
+  imports:
+    core_registry: kernloom-core-registry
+  profiles:
+    - id: production.high_assurance_access
+      mode: inherited
+      owner: security-platform
+    - id: production.runtime_mitigation
+      mode: inherited
+      owner: security-platform
+    - id: kernloom.runtime_governance
+      mode: inherited
+      owner: security-platform
+
