@@ -12,7 +12,12 @@ spec:
     - id: production.runtime_mitigation
       mode: inherited
       owner: security-platform
+    - id: production.delegation_readonly
+      mode: inherited
+      owner: security-platform
+    - id: production.temporary_runtime_exception
+      mode: inherited
+      owner: security-platform
     - id: kernloom.runtime_governance
       mode: inherited
       owner: security-platform
-
