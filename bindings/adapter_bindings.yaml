@@ -1,0 +1,22 @@
+kind: AdapterBindingSet
+metadata:
+  id: enterprise.adapter_bindings
+  version: v0.1.0
+spec:
+  bindings:
+    - capability_id: enforce.runtime.rate_limit_entity
+      adapter_id: kernloom.adapter.klshield
+      environments:
+        - prod
+      stages:
+        - prod
+      implementation_status: implemented
+      required_grant_profile: production.runtime_mitigation
+    - capability_id: enforce.runtime.deny_entity_temporarily
+      adapter_id: kernloom.adapter.klshield
+      environments:
+        - prod
+      stages:
+        - prod
+      implementation_status: implemented
+      required_grant_profile: production.runtime_mitigation

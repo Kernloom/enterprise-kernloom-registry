@@ -1,0 +1,30 @@
+kind: RepositoryBindingSet
+metadata:
+  id: enterprise.default.repository_bindings
+  version: v0.1.0
+spec:
+  repositories:
+    - id: repo.enterprise-kernloom-policies
+      type: git
+      provider: github
+      org: kernloom-demo
+      repo: enterprise-kernloom-policies
+      default_branch: main
+      owner_team: security-platform
+      visibility: restricted
+    - id: repo.kernloom-demo-klshield-config
+      type: git
+      provider: github
+      org: kernloom-demo
+      repo: klshield-config
+      default_branch: main
+      owner_team: security-platform
+      visibility: platform_team
+    - id: repo.kernloom-demo-ziti-config
+      type: git
+      provider: github
+      org: kernloom-demo
+      repo: ziti-config
+      default_branch: main
+      owner_team: network-platform
+      visibility: platform_team

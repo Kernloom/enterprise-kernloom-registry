@@ -1,0 +1,27 @@
+kind: CanonicalActionCatalog
+metadata:
+  id: enterprise.default.canonical_actions
+  version: v0.1.0
+spec:
+  actions:
+    - id: kernloom_action.runtime_abnormal_source_mitigation
+      type: action_type.runtime_mitigation
+      sensitivity: high
+      owner: security-platform
+      description: Runtime mitigation for abnormal source behavior against a production application.
+      required_controls:
+        - runtime_action_applied
+        - runtime_action_readback
+      required_events:
+        - event.runtime_action_applied
+        - event.runtime_action_readback
+
+    - id: kernloom_action.production_service_connectivity
+      type: action_type.connectivity
+      sensitivity: medium
+      owner: network-platform
+      description: Production service connectivity governed through approved overlay service policy.
+      required_controls:
+        - ziti_service_policy_present
+      required_events:
+        - event.config_conformance_observed

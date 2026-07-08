@@ -1,0 +1,75 @@
+kind: PolicySourceIndex
+metadata:
+  id: enterprise.default.policy_sources
+  version: v0.1.0
+spec:
+  policy_sources:
+    - id: source.kernloom-demo-klshield-config-prod
+      type: config_repo
+      repo_ref: repo.kernloom-demo-klshield-config
+      tenant_scope: kernloom-demo
+      environment_scope: prod
+      target_scope:
+        - klshield-prod
+      resource_scope:
+        - production_application
+      visibility: platform_team
+      owner: security-platform
+
+    - id: source.kernloom-demo-ziti-config-prod
+      type: config_repo
+      repo_ref: repo.kernloom-demo-ziti-config
+      tenant_scope: kernloom-demo
+      environment_scope: prod
+      target_scope:
+        - ziti-prod
+      resource_scope:
+        - production_application
+      visibility: platform_team
+      owner: network-platform
+
+    - id: source.kernloom-demo-klshield-policies-prod
+      type: policy_repo
+      repo_ref: repo.enterprise-kernloom-policies
+      tenant_scope: kernloom-demo
+      environment_scope: prod
+      target_scope:
+        - klshield-prod
+      resource_scope:
+        - production_application
+      visibility: restricted
+      owner: security-platform
+      policy_paths:
+        - policies/runtime/mitigate-abnormal-source-behavior.intent.kni
+        - policies/exceptions/temporary-loadtest-allow-source.intent.kni
+        - policies/kernloom/runtime-actions-require-safety-metadata.intent.kni
+      policy_meanings:
+        - policy_path: policies/runtime/mitigate-abnormal-source-behavior.intent.kni
+          canonical_actions:
+            - kernloom_action.runtime_abnormal_source_mitigation
+          action_types:
+            - action_type.runtime_mitigation
+
+    - id: source.kernloom-demo-ziti-policies-prod
+      type: policy_repo
+      repo_ref: repo.enterprise-kernloom-policies
+      tenant_scope: kernloom-demo
+      environment_scope: prod
+      target_scope:
+        - ziti-prod
+      resource_scope:
+        - production_application
+      visibility: restricted
+      owner: security-platform
+      policy_paths:
+        - policies/access/protect-production-admin-access.intent.kni
+        - policies/delegation/ziti-readonly-observation.intent.kni
+      policy_meanings:
+        - policy_path: policies/access/protect-production-admin-access.intent.kni
+          canonical_actions:
+            - kernloom_action.production_service_connectivity
+          action_types:
+            - action_type.connectivity
+        - policy_path: policies/delegation/ziti-readonly-observation.intent.kni
+          action_types:
+            - action_type.connectivity
